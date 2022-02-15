@@ -32,7 +32,7 @@ class hfuter:
             print("{username}登录失败！".format(username=self.username))
             self.logged_in = False
     
-    @retry()
+    @retry(max_delay=10.0)
     def __login(self) -> bool:
         def encrypt_password(text: str, key: str):
             """encrypt password"""
@@ -127,7 +127,7 @@ class hfuter:
         else:
             return False
     
-    @retry()
+    @retry(max_delay=10.0)
     def basic_infomation(self):
         if not self.logged_in:
             return {}
@@ -184,7 +184,7 @@ class hfuter:
 
         return info['data']
     
-    @retry()
+    @retry(max_delay=10.0)
     def daily_checkin(self) -> bool:
         if not self.logged_in:
             return False
@@ -291,7 +291,7 @@ class hfuter:
 
 
 if __name__ == "__main__":
-    stu = hfuter(username=sys.argv[1], password=sys.argv[2])
+    stu = hfuter('2019218125', 'Szc1926318207')
     if stu.daily_checkin():
         print("签到成功~")
         if len(sys.argv) >= 4:
