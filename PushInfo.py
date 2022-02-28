@@ -7,7 +7,7 @@ default_headers = {
 
 
 def push_info(token, msg):
-    url = 'http://pushplus.hxtrip.com/send'
+    url = 'http://www.pushplus.plus/send'
     data = {
         'token': token,
         'content': msg
